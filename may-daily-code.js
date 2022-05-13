@@ -340,3 +340,54 @@ function firstRepeat(word) {
 firstRepeat('Galadriel')
 
 firstRepeat('pippin')
+
+// May 10 Count The Lone Ones
+// Create a function which counts how many lone 1s appear in a given number. Lone means the number 
+// doesn't appear twice or more in a row.
+
+function countLoneOnes(number) {
+    const workingArray = number.toString().split('');
+    let count = 0;
+    workingArray.forEach((num, i) => {
+        if(num === '1' && workingArray[i - 1] !== '1' && workingArray[i + 1] !== '1') {
+            count ++;
+        }
+    })
+
+    return count
+}
+
+countLoneOnes(101) 
+// ➞ 2
+
+countLoneOnes(1191) 
+// ➞ 1
+
+countLoneOnes(1111) 
+// ➞ 0
+
+countLoneOnes(462) 
+// ➞ 0
+
+
+// May 11 Check If The Brick Fits Through The Hole
+// Write the function that takes three dimensions of a brick: height(a), width(b) and depth(c) and 
+// returns true if this brick can fit into a hole with the width(w) and height(h).
+
+function doesBrickFit(a,b,c,w,h) {
+    const holeSize = w * h;
+    const brickLong = a * c;
+    const brickShort = a * b;
+
+    return brickShort <= holeSize || brickLong <= holeSize ? true : false
+}
+
+
+doesBrickFit(1, 1, 1, 1, 1) 
+// ➞ true
+
+doesBrickFit(1, 2, 1, 1, 1) 
+// ➞ true
+
+doesBrickFit(1, 2, 2, 1, 1) 
+// ➞ false
