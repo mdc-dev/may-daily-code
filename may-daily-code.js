@@ -303,3 +303,40 @@ signAll(obj, "Rocky")
 //     },
 //     signature: "Rocky",  // changed
 // }
+
+
+// May 9 Find First Character That Repeats
+// Create a function that takes a string and returns the first character that repeats. 
+// If there is no repeat of a character, return "-1".
+
+function firstRepeat(word) {
+    const lettersArray = [];
+    let repeatedLetter;
+    let wordArray = word.split('')
+    wordArray.forEach(letter => {
+        if(lettersArray.includes(letter) && !repeatedLetter) {
+            repeatedLetter = letter;
+        } else {
+            lettersArray.push(letter)
+        }
+    });
+
+    return repeatedLetter ? repeatedLetter : -1
+}
+
+// firstRepeat("legolas") 
+// ➞ "l"
+
+// firstRepeat("Gandalf") 
+// ➞ "a"
+
+// firstRepeat("Balrog") 
+// ➞ "-1"
+
+// firstRepeat("Isildur") 
+// ➞ "-1"
+// Case sensitive "I" not equal to "i"
+
+firstRepeat('Galadriel')
+
+firstRepeat('pippin')
