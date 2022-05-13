@@ -149,3 +149,51 @@ countNumberOfOccurrences({
     b: "scumbag"
   }) 
 //   ➞ { idiot: 1, scumbag: 1 }
+
+// May 5 Pronouncing the X's
+// Create a function which replaces all the x's in the string in the following ways:
+// Replace all x's with "cks" UNLESS:
+// The word begins with "x", therefore replace it with "z".
+// The word is just the letter "x", therefore replace it with "ecks".
+
+function xPronounce(string) {
+    let wordArray = string.split(' ');
+    let newArray = [];
+    wordArray.forEach(word => {
+        if(word.includes('x') || word.includes('X')) {
+            let lettersArr = word.split('');
+            if (lettersArr.length === 1) {
+                newArray.push('ecks')
+            } else if (lettersArr[0] == 'x') {
+                lettersArr[0] = 'z'
+                newArray.push(lettersArr.join(''))
+            } else {
+                let newWord = ''
+                lettersArr.forEach(letter => {
+                    if (letter === 'x' || letter === 'X') {
+                        newWord += 'cks';
+                    } else {
+                        newWord += letter
+                    }
+                })
+                newArray.push(newWord)
+            }
+        } else {
+            newArray.push(word)
+        } 
+    });
+
+    return newArray.join(' ');
+}
+
+
+
+xPronounce("Inside the box was a xylophone") 
+// ➞ "Inside the bocks was a zylophone"
+
+xPronounce("The x ray is excellent") 
+// ➞ "The ecks ray is eckscellent"
+
+xPronounce("OMG x box unboxing video x D") 
+// ➞ "OMG ecks bocks unbocksing video ecks D"
+
