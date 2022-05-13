@@ -391,3 +391,32 @@ doesBrickFit(1, 2, 1, 1, 1)
 
 doesBrickFit(1, 2, 2, 1, 1) 
 // ➞ false
+
+
+// May 12 Censored Strings
+// Someone has attempted to censor my strings by replacing every vowel with a *, l*k* th*s. Luckily, 
+// I've been able to find the vowels that were removed. Given a censored string and a string of the censored 
+// vowels, return the original uncensored string.
+
+function uncensor(phrase, vowels) {
+    const splitPhrase = phrase.split('');
+    let vowelsArray = vowels.split('')
+    let newArray = []
+    splitPhrase.forEach(letter => {
+        if (letter === '*') {
+            newArray.push(vowelsArray[0]);
+            vowelsArray.shift()
+        } else newArray.push(letter)
+    })
+
+    return newArray.join('');
+}
+
+uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo") 
+// ➞ "Where did my vowels go?"
+
+uncensor("abcd", "") 
+// ➞ "abcd"
+
+uncensor("*PP*RC*S*", "UEAE") 
+// ➞ "UPPERCASE"
