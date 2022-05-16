@@ -492,3 +492,38 @@ numInStr(["abc", "ab10c", "a10bc", "bcd"])
 
 numInStr(["this is a test", "test1"]) 
 // ➞ ["test1"]
+
+
+// May 15 Temperature Converter
+// Create a function that converts Celsius to Fahrenheit and vice versa.
+
+function convert(temp) {
+    let standard;
+    let temperature = [];
+    const numbersArr = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    temp.split('').forEach(item => {
+        if(numbersArr.includes(item)) {
+            temperature.push(item)
+        } else if (item === 'F' || item == 'C') {
+            standard = item;
+        }
+    })
+
+    temperature = temperature.join('')
+
+    if(standard !== 'F' && standard !== 'C') {
+        return 'Error'
+    } else {
+        return standard === 'F' ? (parseInt(temperature) - 32) * 5/9 : (parseInt(temperature) * 9/5) + 32
+    }
+} 
+
+convert("35°C") 
+// ➞ "95°F"
+
+convert("19°F") 
+// ➞ "-7°C"
+
+convert("33") 
+// ➞ "Error"
+
