@@ -581,24 +581,44 @@ function additivePersistence(number) {
 }
 
 
+function multiplicativePersistence(number) {
+    let count = 1
+    const firstNumber = number.toString().split('').reduce((a, b) => parseInt(a) * parseInt(b));
+    if(firstNumber.toString().length === 1) {
+        return 0
+    } else {
+        function multiplyDigits(num) {
+            count ++
+            let number = num.toString().split('').reduce((a, b) => parseInt(a) * parseInt(b));
+            if (number.toString().split('').length > 1) {
+                multiplyDigits(number);
+            } else  {
+                return count
+            }
+        }   
+    }
+    
+    multiplyDigits(firstNumber)
+}
 
-additivePersistence(1679583) 
+
+// additivePersistence(1679583) 
 // ➞ 3
 // 1 + 6 + 7 + 9 + 5 + 8 + 3 = 39
 // 3 + 9 = 12
 // 1 + 2 = 3
 // It takes 3 iterations to reach a single-digit number.
 
-additivePersistence(123456) 
+// additivePersistence(123456) 
 // ➞ 2
 // 1 + 2 + 3 + 4 + 5 + 6 = 21
 // 2 + 1 = 3
 
-additivePersistence(6) 
+// additivePersistence(6) 
 // ➞ 0
 // Because 6 is already a single-digit integer.
 
-// multiplicativePersistence(77) 
+multiplicativePersistence(77) 
 // ➞ 4
 // 7 x 7 = 49
 // 4 x 9 = 36
@@ -606,11 +626,11 @@ additivePersistence(6)
 // 1 x 8 = 8
 // It takes 4 iterations to reach a single-digit number.
 
-// multiplicativePersistence(123456) 
+multiplicativePersistence(123456) 
 // ➞ 2
 // 1 x 2 x 3 x 4 x 5 x 6 = 720
 // 7 x 2 x 0 = 0
 
-// multiplicativePersistence(4) 
+multiplicativePersistence(4) 
 // ➞ 0
 // Because 4 is already a single-digit integer.
