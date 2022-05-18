@@ -634,3 +634,46 @@ multiplicativePersistence(123456)
 multiplicativePersistence(4) 
 // ➞ 0
 // Because 4 is already a single-digit integer.
+
+
+// May 18 Happy Numbers
+// Given any number, we can create a new number by adding the sums of squares of digits of that number. For example, given 203, 
+// our new number is 4 + 0 + 9 = 13. If we repeat this process, we get a sequence of numbers:
+// 203 -> 13 -> 10 -> 1 -> 1
+// Sometimes, like with 203, the sequence reaches (and stays at) 1. Numbers like this are called happy.
+
+// Not all numbers are happy. If we started with 11, the sequence would be:
+
+// 11 -> 2 -> 4 -> 16 -> ...
+// This sequence will never reach 1, and so the number 11 is called unhappy.
+// Given a positive whole number, you have to determine whether that number is happy or unhappy.
+
+function happy(num) {
+    function breakdown(number) {
+        const squaredArray = number.toString().split('').map(digit => {
+            return digit * digit;
+        });
+        let total = squaredArray.reduce((a, b) => a + b, 0);
+
+        if(total === 1) {
+            console.log(true);
+            return true
+        } else if(total === 4) {
+            console.log(false);
+            return false;
+        } else {
+            breakdown(total)
+        }
+    };
+
+    breakdown(num)
+}
+
+happy(203) 
+// ➞ true
+
+happy(11) 
+// ➞ false
+
+happy(107) 
+// ➞ false
