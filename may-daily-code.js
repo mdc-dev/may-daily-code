@@ -656,10 +656,8 @@ function happy(num) {
         let total = squaredArray.reduce((a, b) => a + b, 0);
 
         if(total === 1) {
-            console.log(true);
             return true
         } else if(total === 4) {
-            console.log(false);
             return false;
         } else {
             breakdown(total)
@@ -677,3 +675,26 @@ happy(11)
 
 happy(107) 
 // ➞ false
+
+// May 19 Gauss's Addition
+// Create a function that adds all the numbers together from 1 to n or, if two numbers are given: n to m. The input can be in any order.
+
+function gauss(...nums) {
+    let num;
+    if(nums.sort((a, b) => a - b).length > 1) {
+        num = nums[1] - nums[0] + 1;
+        return (num / 2) * (nums[0] + nums[1]);
+    } else {
+        num = nums[0];
+        return (num * (num + 1)) / 2;
+    } 
+}
+
+gauss(100) 
+// ➞ 5050 // From the video
+
+gauss(5001, 7000) 
+// ➞ 12001000 // Also ^^
+
+gauss(1975, 165) 
+// ➞ 1937770
