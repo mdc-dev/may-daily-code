@@ -758,3 +758,35 @@ sumDigProd(0)
 
 sumDigProd(1, 2, 3, 4, 5, 6) 
 // ➞ 2
+
+
+// May 22 Majority Vote
+// Create a function that returns the majority vote in an array. A majority vote is an element that 
+// occurs > N/2 times in an array (where N is the length of the array).
+
+function majorityVote(array) {
+    let countObj = {};
+    array.forEach(item => {
+        if(Object.keys(countObj).includes(item)) {
+            countObj[item] = countObj[item] + 1;
+        } else {
+            countObj[item] = 1;
+        }
+    })
+
+    let winner = Object.keys(countObj).sort((a, b) => b.value - a.value)[0];
+    if(countObj[winner] / array.length > .5) {
+        console.log(winner);
+    } else {
+        console.log(null)
+    }
+}
+
+majorityVote(["A", "A", "B"]) 
+// ➞ "A"
+
+majorityVote(["A", "A", "A", "B", "C", "A"]) 
+// ➞ "A"
+
+majorityVote(["A", "B", "B", "A", "C", "C"]) 
+// ➞ null
