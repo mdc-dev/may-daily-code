@@ -698,3 +698,26 @@ gauss(5001, 7000)
 
 gauss(1975, 165) 
 // ➞ 1937770
+
+// May 20 Headline Hashtags
+// Write a function that retrieves the top 3 longest words of a newspaper headline and transforms them 
+// into hashtags. If multiple words tie for the same length, retrieve the word that occurs first.
+
+function getHashTags(string) {
+    let sorted = string.split(' ').sort((a, b) => b.length - a.length).slice(0, 3);
+    return sorted.map(hash => {
+        return '#' + hash;
+    });
+}
+
+getHashTags("How the Avocado Became the Fruit of the Global Trade")
+// ➞ ["#avocado", "#became", "#global"]
+
+getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year")
+// ➞ ["#christmas", "#probably", "#will"]
+
+getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit")
+// ➞ ["#surprise", "#parents", "#fruit"]
+
+getHashTags("Visualizing Science")
+// ➞ ["#visualizing", "#science"] 
