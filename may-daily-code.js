@@ -721,3 +721,40 @@ getHashTags("Hey Parents, Surprise, Fruit Juice Is Not Fruit")
 
 getHashTags("Visualizing Science")
 // ➞ ["#visualizing", "#science"] 
+
+
+// May 21 Product of Digits Sums
+// Create a function that takes one, two or more numbers as arguments and adds them together to get a 
+// new number. The function then repeatedly multiplies the digits of the new number by each other, yielding 
+// a new number, until the product is only 1 digit long. Return the final product.
+
+function sumDigProd(...nums) {
+    function reduceNum(num) {
+        let arr = num.toString().split('');
+        let newNum = arr.reduce((a, b) => parseInt(a) * parseInt(b));
+        numCheck(newNum)
+    }
+
+    function numCheck(n) {
+        if(n.toString().length > 1) {
+            reduceNum(n)
+        } else {
+            return n;
+        }
+    }
+
+    const number = nums.reduce((a, b) => a + b);
+    numCheck(number)
+}
+
+sumDigProd(16, 28) 
+// ➞ 6
+// 16 + 28 = 44
+// 4 * 4 =  16
+// 1 * 6 = 6
+
+sumDigProd(0) 
+// ➞ 0
+
+sumDigProd(1, 2, 3, 4, 5, 6) 
+// ➞ 2
