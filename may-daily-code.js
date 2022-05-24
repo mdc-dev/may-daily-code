@@ -776,9 +776,9 @@ function majorityVote(array) {
 
     let winner = Object.keys(countObj).sort((a, b) => b.value - a.value)[0];
     if(countObj[winner] / array.length > .5) {
-        console.log(winner);
+        return winner
     } else {
-        console.log(null)
+        return null
     }
 }
 
@@ -790,3 +790,36 @@ majorityVote(["A", "A", "A", "B", "C", "A"])
 
 majorityVote(["A", "B", "B", "A", "C", "C"]) 
 // ➞ null
+
+
+// May 23 Remove the Last Vowel
+// Write a function that removes the last vowel in each word in a sentence.
+
+function removeLastVowel(string) {
+    let wordArr = string.split(' ');
+    let returnArr = wordArr.map(word => {
+        let reverseWord = word.split('').reverse();
+        let newWord = []
+        let removed = false;
+        reverseWord.forEach(letter => {
+            let reg = /[aeiou]/;
+            if(reg.test(letter)  && !removed) {
+                removed = true;
+            } else {
+                newWord.push(letter)
+            }
+        });
+        return newWord.reverse().join('')
+    })
+
+    return returnArr.join(' ');
+}
+
+removeLastVowel("Those who dare to fail miserably can achieve greatly.")
+// ➞ "Thos wh dar t fal miserbly cn achiev gretly."
+
+removeLastVowel("Love is a serious mental disease.")
+// ➞ "Lov s  serios mentl diseas"
+
+removeLastVowel("Get busy living or get busy dying.")
+// ➞ "Gt bsy livng r gt bsy dyng"
