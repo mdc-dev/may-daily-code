@@ -844,20 +844,20 @@ function findAllDigits(array) {
 
             console.log(number, ourDigits.sort((a,b) => a - b), matchArr)
             if(ourDigits.includes(number) && ourDigits.sort((a,b) => a - b) === matchArr) {
-               console.log('Match')
+            //    console.log('Match')
             }
         })
     });
 
     if(!returnNum) {
-        console.log("Missing Numbers")
+        // console.log("Missing Numbers")
     } else {
-        console.log(returnNum)
+        // console.log(returnNum)
     }
 }
 
 
-findAllDigits([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083]) 
+// findAllDigits([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083]) 
 // ➞ 5057
 // digits found:  517-  4-38  29-6  -0
 
@@ -869,3 +869,26 @@ findAllDigits([5175, 4538, 2926, 5057, 6401, 4376, 2280, 6137, 8798, 9083])
 // ➞ "Missing digits!"
 // digits found:  48-3  --76  ---9  ----  -5--  ----  ----  2---
 // 0 and 1 are missing
+
+// May 25 Calculate Combinations
+// Create a function that takes a variable number of arguments, each argument representing the number 
+// of items in a group. The function should return the number of permutations (combinations) of choices 
+// you would have if you selected one item from each group.
+
+function combinations(...nums) {
+    let count = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        count = count * nums[i]
+    }
+    console.log(count)
+}
+
+
+combinations(2, 3) 
+// ➞ 6
+
+combinations(3, 7, 4) 
+// ➞ 84
+
+combinations(2, 3, 4, 5) 
+// ➞ 120
