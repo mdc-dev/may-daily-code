@@ -904,7 +904,7 @@ combinations(2, 3, 4, 5)
 function mostExpensive(obj) {
     const exp = Object.values(obj).sort((a,b) => b - a)[0];
     const item = Object.keys(obj).find(key => obj[key] === exp)
-    console.log("The most most expensive one is " + item)
+    return "The most most expensive one is " + item;
 }
 
 
@@ -921,3 +921,39 @@ mostExpensive({
   "Diamond Ring": 3500
 }) 
 // ➞ "The most expensive one is the Diamond Ring"
+
+// May 27 Switching Between Pencils
+// When coloring a striped pattern, you may start by coloring each square sequentially, meaning you 
+// spend time needing to switch coloring pencils.
+// Create a function where given an array of colors cols, return how long it takes to color the whole pattern. Note the following times:
+
+// It takes 1 second to switch between pencils.
+// It takes 2 seconds to color a square.
+// See the example below for clarification.
+
+function colorPatternTimes(array) {
+    let count = array.length * 2;
+    for (let i = 1; i < array.length; i++) {
+        const element = array[i];
+        if(element !== array[i - 1]) {
+            count ++;
+        }
+    };
+
+    console.log(count)
+}
+
+colorPatternTimes(["Red", "Blue", "Red", "Blue", "Red"]) 
+// ➞ 14
+
+// There are 5 colors so it takes 2 seconds to color each one (2 x 5 = 10).
+// You need to switch the pencils 4 times and it takes 1 second to switch (1 x 4 = 4).
+// 10 + 4 = 14
+colorPatternTimes(["Blue"]) 
+// ➞ 2
+
+colorPatternTimes(["Red", "Yellow", "Green", "Blue"]) 
+// ➞ 11
+
+colorPatternTimes(["Blue", "Blue", "Blue", "Red", "Red", "Red"]) 
+// ➞ 13
